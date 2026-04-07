@@ -15,42 +15,9 @@
     gap: var(--space-lg);
 }
 
-/* ──────────────────────────────────────────────────────────────
-   BACK BUTTON (top-left floating)
-────────────────────────────────────────────────────────────── */
+/* Back button — hidden: receiver link is share-only */
 .receiver-back-btn {
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    background: var(--color-surface);
-    border: 1px solid var(--color-accent-subtle);
-    color: var(--color-text-muted);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: var(--shadow-ambient);
-    transition: all var(--duration-fast) var(--ease-soft);
-    z-index: 100;
-}
-
-.receiver-back-btn:hover {
-    color: var(--color-text);
-    background: var(--color-surface-raised);
-    transform: translateX(-2px);
-}
-
-.back-arrow {
-    font-size: 16px;
-    transition: transform var(--duration-fast) var(--ease-spring);
-}
-
-.receiver-back-btn:hover .back-arrow {
-    transform: translateX(-3px);
+    display: none;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -342,10 +309,5 @@
     .receiver-cta {
         font-size: 14px;
         padding: 16px 28px;
-    }
-
-    .receiver-back-btn {
-        top: 16px;
-        left: 16px;
     }
 }
