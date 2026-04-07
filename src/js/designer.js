@@ -6,7 +6,6 @@
 import { appState, patchState, DEFAULT_STATE } from './state.js';
 import { writeStateToURL, buildShareableLink } from './url.js';
 import { applyTheme } from './themes.js';
-import { getCharacterSVG } from './characters.js';
 
 // Cleanup handle for previous bindDesignerControls call
 let designerAbortCtrl = null;
@@ -34,7 +33,6 @@ export function populateForm() {
     setVal('receiverName', s.receiverName);
 
     setSegmented('character', s.character);
-    setSegmented('intensity', s.intensity);
 
     document.querySelectorAll('[data-theme-btn]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.themeBtn === s.theme);
@@ -58,13 +56,6 @@ export function updatePreview() {
     set('previewMainMsg', s.mainMessage);
     set('previewSubMsg', s.subMessage);
     set('previewFrom', s.senderName);
-
-    const stage = document.getElementById('previewCharStage');
-    if (stage) {
-        stage.innerHTML =
-            getCharacterSVG(s.character, 'left') +
-            getCharacterSVG(s.character, 'right');
-    }
 }
 
 /** Mark a segmented control button as active */

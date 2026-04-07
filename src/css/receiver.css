@@ -47,64 +47,13 @@
     max-width: 480px;
 }
 
-/* Individual character wrapper */
-.char-wrap {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
-    transition: transform var(--hug-duration) var(--ease-spring);
-    will-change: transform;
-}
-
-.char-wrap svg {
-    width: 120px;
-    height: auto;
+/* The main static character image container */
+.hero-image {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
     filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.08));
-}
-
-/* Idle float */
-.char-wrap.is-idle .char-wrap {
     animation: floatIdle 4s var(--ease-soft) infinite;
-}
-
-.char-left.is-idle {
-    animation: floatIdle 4s var(--ease-soft) infinite;
-}
-
-.char-right.is-idle {
-    animation: floatIdleRight 4.5s var(--ease-soft) infinite;
-}
-
-/* Approaching — characters move inward */
-.char-left.is-approaching {
-    transform: translateX(var(--hug-translate-x)) scale(var(--hug-scale));
-    animation: none;
-}
-
-.char-right.is-approaching {
-    transform: translateX(calc(-1 * var(--hug-translate-x))) scale(var(--hug-scale));
-    animation: none;
-}
-
-/* Hugging — overlap */
-.char-left.is-hugging {
-    transform: translateX(var(--hug-translate-x)) scale(var(--hug-scale));
-    animation: squeezeBounce 0.5s var(--ease-spring) forwards;
-}
-
-.char-right.is-hugging {
-    transform: translateX(calc(-1 * var(--hug-translate-x))) scale(var(--hug-scale));
-    animation: squeezeBounce 0.5s var(--ease-spring) forwards;
-}
-
-/* Complete — hold position */
-.char-left.is-complete {
-    transform: translateX(var(--hug-translate-x)) scale(var(--hug-scale));
-}
-
-.char-right.is-complete {
-    transform: translateX(calc(-1 * var(--hug-translate-x))) scale(var(--hug-scale));
 }
 
 /* ──────────────────────────────────────────────────────────────

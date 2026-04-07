@@ -90,21 +90,7 @@
                     </div>
                 </section>
 
-                <!-- Section: Character -->
-                <section class="control-section" aria-labelledby="char-heading">
-                    <h2 class="section-label" id="char-heading">
-                        <span class="section-icon">🐾</span> Characters
-                    </h2>
 
-                    <div class="field-group">
-                        <label class="field-label">Character Style</label>
-                        <div class="segmented-control" role="group" aria-label="Character style">
-                            <button class="seg-btn active" data-control="character" data-value="bunny">🐰 Bunny</button>
-                            <button class="seg-btn" data-control="character" data-value="bear">🐻 Milk+Mocha</button>
-                            <button class="seg-btn" data-control="character" data-value="blob">🫧 Blob</button>
-                        </div>
-                    </div>
-                </section>
 
                 <!-- Section: Theme -->
                 <section class="control-section" aria-labelledby="theme-heading">
@@ -141,14 +127,6 @@
                         <span class="section-icon">💫</span> Feel
                     </h2>
 
-                    <div class="field-group">
-                        <label class="field-label">Hug Intensity</label>
-                        <div class="segmented-control" role="group" aria-label="Hug intensity">
-                            <button class="seg-btn" data-control="intensity" data-value="gentle">Gentle</button>
-                            <button class="seg-btn active" data-control="intensity" data-value="cozy">Cozy</button>
-                            <button class="seg-btn" data-control="intensity" data-value="squeezy">Squeezy</button>
-                        </div>
-                    </div>
 
                     <div class="toggles-row">
                         <label class="toggle-label">
@@ -213,7 +191,7 @@
                             <div class="preview-receiver-wrap">
                                 <p class="preview-top-label" id="previewTopLabel">A hug is waiting for you</p>
                                 <div class="preview-char-stage" id="previewCharStage">
-                                    <!-- Characters injected by JS -->
+                                    <img id="previewImage" class="hero-image" src="/idle.png" alt="Hug Preview" />
                                 </div>
                                 <button class="preview-cta" id="previewCta" tabindex="-1" aria-hidden="true">
                                     Tap here to receive a virtual hug
@@ -252,12 +230,7 @@
 
         <!-- Character stage -->
         <div class="receiver-stage" id="receiverStage">
-            <div class="char-wrap char-left" id="charLeft">
-                <!-- Left character SVG injected by JS -->
-            </div>
-            <div class="char-wrap char-right" id="charRight">
-                <!-- Right character SVG injected by JS -->
-            </div>
+            <img id="stageImage" class="hero-image" src="/idle.png" alt="Hug Experience" />
 
             <!-- Floating hearts container (hug hearts) -->
             <div class="hug-hearts" id="hugHearts" aria-hidden="true"></div>

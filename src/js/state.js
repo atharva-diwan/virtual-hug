@@ -6,20 +6,11 @@ export const DEFAULT_STATE = {
     subMessage: 'Close your eyes and imagine me holding you tight.',
     senderName: 'From me',
     receiverName: 'For you',
-    character: 'bunny',
     theme: 'blush',
-    intensity: 'cozy',
     hearts: true,
     sparkles: true,
     autoReplay: false,
     mode: 'designer',
-};
-
-// Hug physics by intensity
-export const INTENSITY_CONFIG = {
-    gentle: { translateX: 68, scale: 1.04, duration: 900 },
-    cozy: { translateX: 90, scale: 1.08, duration: 700 },
-    squeezy: { translateX: 108, scale: 1.12, duration: 500 },
 };
 
 /**

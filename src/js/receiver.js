@@ -5,13 +5,11 @@
 
 import { appState, patchState } from './state.js';
 import { writeStateToURL } from './url.js';
-import { getCharacterSVG } from './characters.js';
 import {
     runHugSequence,
     resetHugSequence,
     initIdleState,
-    startAmbientHearts,
-    applyIntensity,
+    startAmbientHearts
 } from './animation.js';
 
 // Cleanup handles from previous init call
@@ -48,18 +46,12 @@ export function initReceiver(onBack) {
             : '';
     }
 
-    // ── Render characters ──────────────────────────
-    const charLeft = el('charLeft');
-    const charRight = el('charRight');
+    // ── Setup Hero Image ───────────────────────────
+    const stageImage = el('stageImage');
 
-    if (charLeft) charLeft.innerHTML = getCharacterSVG(s.character, 'left');
-    if (charRight) charRight.innerHTML = getCharacterSVG(s.character, 'right');
-
-    // ── Set intensity vars ─────────────────────────
-    applyIntensity(s.intensity);
 
     // ── Idle animation ─────────────────────────────
-    initIdleState(charLeft, charRight);
+    initIdleState(stageImage);
 
     // ── Ambient hearts ─────────────────────────────
     if (stopAmbientHearts) {
@@ -87,8 +79,7 @@ export function initReceiver(onBack) {
     const sparkleBurst = el('sparkleBurst');
 
     const hugOptions = {
-        charLeft,
-        charRight,
+        heroImage: stageImage,
         hugHearts,
         sparkleBurst,
         receiverMessage: msgArea,
