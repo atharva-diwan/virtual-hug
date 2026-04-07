@@ -1,0 +1,220 @@
+/* animations.css — All keyframes and animation utilities */
+
+/* ──────────────────────────────────────────────────────────────
+   AMBIENT FLOAT — gentle idle bobbing for characters
+────────────────────────────────────────────────────────────── */
+@keyframes floatIdle {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-8px) rotate(-1.5deg);
+    }
+
+    60% {
+        transform: translateY(-4px) rotate(1deg);
+    }
+}
+
+@keyframes floatIdleRight {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-6px) rotate(1.5deg);
+    }
+
+    60% {
+        transform: translateY(-10px) rotate(-1deg);
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   AMBIENT HEARTS — slow rise and fade for background hearts
+────────────────────────────────────────────────────────────── */
+@keyframes heartRise {
+    0% {
+        transform: translateY(0) scale(0.6) rotate(-10deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.35;
+    }
+
+    85% {
+        opacity: 0.25;
+    }
+
+    100% {
+        transform: translateY(-120px) scale(1) rotate(10deg);
+        opacity: 0;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   HUG HEARTS — hearts that pop up during hug
+────────────────────────────────────────────────────────────── */
+@keyframes hugHeartPop {
+    0% {
+        transform: translateY(0) scale(0) rotate(var(--rot, 0deg));
+        opacity: 0;
+    }
+
+    25% {
+        transform: translateY(-20px) scale(1.2) rotate(var(--rot, 0deg));
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-80px) scale(0.8) rotate(var(--rot, 15deg));
+        opacity: 0;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SPARKLE — radiating sparkle dots
+────────────────────────────────────────────────────────────── */
+@keyframes sparkleOut {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--sx, 0), var(--sy, -40px)) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SQUEEZE BOUNCE — tiny bounce when hug makes contact
+────────────────────────────────────────────────────────────── */
+@keyframes squeezeBounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(0.93, 1.06);
+    }
+
+    60% {
+        transform: scale(1.06, 0.94);
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   REVEAL — fade + subtle rise
+────────────────────────────────────────────────────────────── */
+@keyframes revealUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   REPLAY BUTTON — gentle pulse
+────────────────────────────────────────────────────────────── */
+@keyframes replayPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   TOAST SLIDE
+────────────────────────────────────────────────────────────── */
+@keyframes toastSlideUp {
+    0% {
+        transform: translateY(24px) translateX(-50%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) translateX(-50%);
+        opacity: 1;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BLUSH APPEAR
+────────────────────────────────────────────────────────────── */
+@keyframes blushAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   UTILITY CLASSES
+────────────────────────────────────────────────────────────── */
+.animate-float-idle {
+    animation: floatIdle 4s var(--ease-soft) infinite;
+}
+
+.animate-float-idle-right {
+    animation: floatIdleRight 4.5s var(--ease-soft) infinite;
+}
+
+.animate-reveal-up {
+    animation: revealUp var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   REDUCED MOTION OVERRIDES
+────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-float-idle,
+    .animate-float-idle-right {
+        animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

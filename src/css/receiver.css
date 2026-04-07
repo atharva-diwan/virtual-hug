@@ -1,0 +1,351 @@
+/* receiver.css — Receiver Mode full-screen experience */
+
+/* ──────────────────────────────────────────────────────────────
+   RECEIVER MODE WRAPPER
+────────────────────────────────────────────────────────────── */
+.receiver-mode {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: var(--space-xl) var(--space-md);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    gap: var(--space-lg);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BACK BUTTON (top-left floating)
+────────────────────────────────────────────────────────────── */
+.receiver-back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    border: 1px solid var(--color-accent-subtle);
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-ambient);
+    transition: all var(--duration-fast) var(--ease-soft);
+    z-index: 100;
+}
+
+.receiver-back-btn:hover {
+    color: var(--color-text);
+    background: var(--color-surface-raised);
+    transform: translateX(-2px);
+}
+
+.back-arrow {
+    font-size: 16px;
+    transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.receiver-back-btn:hover .back-arrow {
+    transform: translateX(-3px);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   TOP LABEL
+────────────────────────────────────────────────────────────── */
+.receiver-top-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--color-accent-soft);
+    animation: revealUp var(--duration-slow) var(--ease-spring) 0.1s both;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   CHARACTER STAGE
+────────────────────────────────────────────────────────────── */
+.receiver-stage {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 48px;
+    height: 260px;
+    width: 100%;
+    max-width: 480px;
+}
+
+/* Individual character wrapper */
+.char-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    transition: transform var(--hug-duration) var(--ease-spring);
+    will-change: transform;
+}
+
+.char-wrap svg {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.08));
+}
+
+/* Idle float */
+.char-wrap.is-idle .char-wrap {
+    animation: floatIdle 4s var(--ease-soft) infinite;
+}
+
+.char-left.is-idle {
+    animation: floatIdle 4s var(--ease-soft) infinite;
+}
+
+.char-right.is-idle {
+    animation: floatIdleRight 4.5s var(--ease-soft) infinite;
+}
+
+/* Approaching — characters move inward */
+.char-left.is-approaching {
+    transform: translateX(var(--hug-translate-x)) scale(var(--hug-scale));
+    animation: none;
+}
+
+.char-right.is-approaching {
+    transform: translateX(calc(-1 * var(--hug-translate-x))) scale(var(--hug-scale));
+    animation: none;
+}
+
+/* Hugging — overlap */
+.char-left.is-hugging {
+    transform: translateX(var(--hug-translate-x)) scale(var(--hug-scale));
+    animation: squeezeBounce 0.5s var(--ease-spring) forwards;
+}
+
+.char-right.is-hugging {
+    transform: translateX(calc(-1 * var(--hug-translate-x))) scale(var(--hug-scale));
+    animation: squeezeBounce 0.5s var(--ease-spring) forwards;
+}
+
+/* Complete — hold position */
+.char-left.is-complete {
+    transform: translateX(var(--hug-translate-x)) scale(var(--hug-scale));
+}
+
+.char-right.is-complete {
+    transform: translateX(calc(-1 * var(--hug-translate-x))) scale(var(--hug-scale));
+}
+
+/* ──────────────────────────────────────────────────────────────
+   HUG HEARTS (pop up during hug)
+────────────────────────────────────────────────────────────── */
+.hug-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hug-heart-item {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    font-size: 18px;
+    color: var(--color-heart);
+    transform-origin: center;
+    animation: hugHeartPop 1.2s var(--ease-soft) forwards;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SPARKLE BURST
+────────────────────────────────────────────────────────────── */
+.sparkle-burst {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.sparkle-item {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sparkle);
+    animation: sparkleOut 0.9s var(--ease-soft) forwards;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   RECEIVER CTA BUTTON
+────────────────────────────────────────────────────────────── */
+.receiver-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 40px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    max-width: 400px;
+    width: 90%;
+    letter-spacing: 0.01em;
+    text-align: center;
+    line-height: 1.4;
+
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12),
+        0 16px 48px color-mix(in srgb, var(--color-accent) 25%, transparent),
+        var(--shadow-inset-hi);
+
+    transition: transform var(--duration-fast) var(--ease-spring),
+        box-shadow var(--duration-fast) var(--ease-soft),
+        opacity var(--duration-fast) var(--ease-soft);
+
+    animation: revealUp var(--duration-slow) var(--ease-spring) 0.3s both;
+    will-change: transform;
+}
+
+.receiver-cta:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.16),
+        0 24px 64px color-mix(in srgb, var(--color-accent) 30%, transparent),
+        var(--shadow-inset-hi);
+}
+
+.receiver-cta:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.receiver-cta:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MESSAGE AREA
+────────────────────────────────────────────────────────────── */
+.receiver-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    opacity: 0;
+    pointer-events: none;
+    max-width: 440px;
+    width: 100%;
+    padding: 0 var(--space-md);
+}
+
+.receiver-message.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    animation: revealUp var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.receiver-main-msg {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 5vw, 30px);
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
+.receiver-sub-msg {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.receiver-from {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+    margin-top: var(--space-xs);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   REPLAY BUTTON
+────────────────────────────────────────────────────────────── */
+.replay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 12px 28px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-subtle);
+    color: var(--color-accent);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+    transition: all var(--duration-fast) var(--ease-spring);
+    animation: revealUp var(--duration-slow) var(--ease-spring) forwards,
+        replayPulse 2.5s var(--ease-soft) 1s infinite;
+}
+
+.replay-btn:hover {
+    background: var(--color-accent);
+    color: white;
+    transform: scale(1.04);
+}
+
+.replay-btn:active {
+    transform: scale(0.97);
+}
+
+.replay-icon {
+    font-size: 18px;
+    display: inline-block;
+    transition: transform var(--duration-med) var(--ease-spring);
+}
+
+.replay-btn:hover .replay-icon {
+    transform: rotate(-180deg);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   RECEIVER FOOTER
+────────────────────────────────────────────────────────────── */
+.receiver-footer {
+    font-size: 12px;
+    color: var(--color-text-faint);
+    font-style: italic;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .receiver-stage {
+        gap: 24px;
+        height: 220px;
+    }
+
+    .char-wrap svg {
+        width: 90px;
+    }
+
+    .receiver-cta {
+        font-size: 14px;
+        padding: 16px 28px;
+    }
+
+    .receiver-back-btn {
+        top: 16px;
+        left: 16px;
+    }
+}

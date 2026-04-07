@@ -1,0 +1,96 @@
+/* themes.css
+   Each theme sets :root custom properties via data-theme attribute.
+   All four themes follow the same token names from variables.css.
+*/
+
+/* ── BLUSH (default — set in variables.css) ─────────────────── */
+[data-theme="blush"] {
+    --color-bg: #FFF0F3;
+    --color-bg-alt: #FFE4EA;
+    --color-surface: #FFFAFB;
+    --color-surface-raised: #FFFFFF;
+    --color-accent: #E8799A;
+    --color-accent-soft: #F4A7B9;
+    --color-accent-subtle: #FFD9E4;
+    --color-text: #3B1F26;
+    --color-text-muted: #8A5A66;
+    --color-text-faint: #C4909F;
+    --color-heart: #E8799A;
+    --color-sparkle: #FFB6C8;
+    --color-char-left: #F9C4D2;
+    --color-char-right: #E8799A;
+    --color-char-detail: #FFFFFF;
+    --color-char-face: #3B1F26;
+    --shadow-ambient: 0 2px 12px rgba(232, 121, 154, 0.10), 0 8px 40px rgba(232, 121, 154, 0.07);
+    --shadow-lifted: 0 4px 24px rgba(232, 121, 154, 0.15), 0 16px 64px rgba(232, 121, 154, 0.10);
+    --shadow-float: 0 8px 32px rgba(232, 121, 154, 0.18), 0 24px 80px rgba(232, 121, 154, 0.12);
+}
+
+/* ── PEACH ──────────────────────────────────────────────────── */
+[data-theme="peach"] {
+    --color-bg: #FFF5F0;
+    --color-bg-alt: #FFE8DC;
+    --color-surface: #FFFBF8;
+    --color-surface-raised: #FFFFFF;
+    --color-accent: #E07A52;
+    --color-accent-soft: #F6A07A;
+    --color-accent-subtle: #FFD6C4;
+    --color-text: #3B2214;
+    --color-text-muted: #8A5C44;
+    --color-text-faint: #C49A84;
+    --color-heart: #E07A52;
+    --color-sparkle: #FFB89C;
+    --color-char-left: #F9C4A8;
+    --color-char-right: #E07A52;
+    --color-char-detail: #FFFFFF;
+    --color-char-face: #3B2214;
+    --shadow-ambient: 0 2px 12px rgba(224, 122, 82, 0.10), 0 8px 40px rgba(224, 122, 82, 0.07);
+    --shadow-lifted: 0 4px 24px rgba(224, 122, 82, 0.15), 0 16px 64px rgba(224, 122, 82, 0.10);
+    --shadow-float: 0 8px 32px rgba(224, 122, 82, 0.18), 0 24px 80px rgba(224, 122, 82, 0.12);
+}
+
+/* ── LAVENDER ─────────────────────────────────────────────── */
+[data-theme="lavender"] {
+    --color-bg: #F5F0FF;
+    --color-bg-alt: #EAE0FF;
+    --color-surface: #FAF8FF;
+    --color-surface-raised: #FFFFFF;
+    --color-accent: #8E6DC4;
+    --color-accent-soft: #B39DDB;
+    --color-accent-subtle: #DDD0F5;
+    --color-text: #2A1B47;
+    --color-text-muted: #6B5090;
+    --color-text-faint: #A990CC;
+    --color-heart: #B39DDB;
+    --color-sparkle: #D5C8F0;
+    --color-char-left: #D0BEED;
+    --color-char-right: #8E6DC4;
+    --color-char-detail: #FFFFFF;
+    --color-char-face: #2A1B47;
+    --shadow-ambient: 0 2px 12px rgba(142, 109, 196, 0.10), 0 8px 40px rgba(142, 109, 196, 0.07);
+    --shadow-lifted: 0 4px 24px rgba(142, 109, 196, 0.15), 0 16px 64px rgba(142, 109, 196, 0.10);
+    --shadow-float: 0 8px 32px rgba(142, 109, 196, 0.18), 0 24px 80px rgba(142, 109, 196, 0.12);
+}
+
+/* ── MOONLIGHT ─────────────────────────────────────────────── */
+[data-theme="moonlight"] {
+    --color-bg: #1E1A2E;
+    --color-bg-alt: #161226;
+    --color-surface: #2A2540;
+    --color-surface-raised: #332D50;
+    --color-accent: #C9B4E8;
+    --color-accent-soft: #E0D0F8;
+    --color-accent-subtle: #3D3560;
+    --color-text: #F0EAFA;
+    --color-text-muted: #A494C8;
+    --color-text-faint: #7060A0;
+    --color-heart: #C9B4E8;
+    --color-sparkle: #E8DEFF;
+    --color-char-left: #C9B4E8;
+    --color-char-right: #8E6DC4;
+    --color-char-detail: #F0EAFA;
+    --color-char-face: #1E1A2E;
+    --shadow-ambient: 0 2px 12px rgba(0, 0, 0, 0.30), 0 8px 40px rgba(0, 0, 0, 0.20);
+    --shadow-lifted: 0 4px 24px rgba(0, 0, 0, 0.35), 0 16px 64px rgba(0, 0, 0, 0.25);
+    --shadow-float: 0 8px 32px rgba(0, 0, 0, 0.40), 0 24px 80px rgba(0, 0, 0, 0.30);
+}

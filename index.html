@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush" data-mode="designer">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Hug — Send a hug across any distance</title>
+    <meta name="description"
+        content="Design and send a wholesome virtual hug to someone you love. Cute animated characters, custom messages, and heartfelt moments." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/css/reset.css" />
+    <link rel="stylesheet" href="/src/css/variables.css" />
+    <link rel="stylesheet" href="/src/css/themes.css" />
+    <link rel="stylesheet" href="/src/css/animations.css" />
+    <link rel="stylesheet" href="/src/css/components.css" />
+    <link rel="stylesheet" href="/src/css/designer.css" />
+    <link rel="stylesheet" href="/src/css/receiver.css" />
+</head>
+
+<body>
+
+    <!-- ============================================================
+       FLOATING AMBIENT HEARTS (decorative background layer)
+  ============================================================ -->
+    <div class="ambient-hearts" aria-hidden="true" id="ambientHearts"></div>
+
+    <!-- ============================================================
+       DESIGNER MODE
+  ============================================================ -->
+    <main class="designer-mode" id="designerMode" role="main">
+
+        <!-- Header -->
+        <header class="designer-header">
+            <div class="brand-pill">
+                <span class="brand-heart">✦</span>
+                <span>Virtual Hug</span>
+            </div>
+            <p class="designer-tagline">Design a heartfelt moment, share it with love</p>
+        </header>
+
+        <!-- Two-column split -->
+        <div class="designer-layout">
+
+            <!-- LEFT: Controls Panel -->
+            <aside class="controls-panel" aria-label="Design controls">
+
+                <!-- Section: Message -->
+                <section class="control-section" aria-labelledby="msg-heading">
+                    <h2 class="section-label" id="msg-heading">
+                        <span class="section-icon">✉︎</span> Message
+                    </h2>
+
+                    <div class="field-group">
+                        <label class="field-label" for="ctaText">CTA Button Text</label>
+                        <input class="field-input" id="ctaText" type="text"
+                            placeholder="Tap here to receive a virtual hug" maxlength="60" />
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" for="mainMessage">Main Message</label>
+                        <textarea class="field-input field-textarea" id="mainMessage" rows="2"
+                            placeholder="Sending you the softest hug across every mile." maxlength="200"></textarea>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" for="subMessage">Sub-message</label>
+                        <textarea class="field-input field-textarea" id="subMessage" rows="2"
+                            placeholder="Close your eyes and imagine me holding you tight." maxlength="200"></textarea>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group field-half">
+                            <label class="field-label" for="senderName">From</label>
+                            <input class="field-input" id="senderName" type="text" placeholder="From me"
+                                maxlength="30" />
+                        </div>
+                        <div class="field-group field-half">
+                            <label class="field-label" for="receiverName">For</label>
+                            <input class="field-input" id="receiverName" type="text" placeholder="For you"
+                                maxlength="30" />
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Character -->
+                <section class="control-section" aria-labelledby="char-heading">
+                    <h2 class="section-label" id="char-heading">
+                        <span class="section-icon">🐾</span> Characters
+                    </h2>
+
+                    <div class="field-group">
+                        <label class="field-label">Character Style</label>
+                        <div class="segmented-control" role="group" aria-label="Character style">
+                            <button class="seg-btn active" data-control="character" data-value="bunny">🐰 Bunny</button>
+                            <button class="seg-btn" data-control="character" data-value="bear">🐻 Bear</button>
+                            <button class="seg-btn" data-control="character" data-value="blob">🫧 Blob</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Theme -->
+                <section class="control-section" aria-labelledby="theme-heading">
+                    <h2 class="section-label" id="theme-heading">
+                        <span class="section-icon">🎨</span> Theme
+                    </h2>
+
+                    <div class="field-group">
+                        <label class="field-label">Color Theme</label>
+                        <div class="theme-swatches" role="group" aria-label="Color theme">
+                            <button class="theme-swatch active" data-theme-btn="blush" aria-label="Blush theme">
+                                <span class="swatch-dot" style="background: #F4A7B9"></span>
+                                <span>Blush</span>
+                            </button>
+                            <button class="theme-swatch" data-theme-btn="peach" aria-label="Peach theme">
+                                <span class="swatch-dot" style="background: #F6A07A"></span>
+                                <span>Peach</span>
+                            </button>
+                            <button class="theme-swatch" data-theme-btn="lavender" aria-label="Lavender theme">
+                                <span class="swatch-dot" style="background: #B39DDB"></span>
+                                <span>Lavender</span>
+                            </button>
+                            <button class="theme-swatch" data-theme-btn="moonlight" aria-label="Moonlight theme">
+                                <span class="swatch-dot" style="background: #C9B4E8"></span>
+                                <span>Moonlight</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Feel -->
+                <section class="control-section" aria-labelledby="feel-heading">
+                    <h2 class="section-label" id="feel-heading">
+                        <span class="section-icon">💫</span> Feel
+                    </h2>
+
+                    <div class="field-group">
+                        <label class="field-label">Hug Intensity</label>
+                        <div class="segmented-control" role="group" aria-label="Hug intensity">
+                            <button class="seg-btn" data-control="intensity" data-value="gentle">Gentle</button>
+                            <button class="seg-btn active" data-control="intensity" data-value="cozy">Cozy</button>
+                            <button class="seg-btn" data-control="intensity" data-value="squeezy">Squeezy</button>
+                        </div>
+                    </div>
+
+                    <div class="toggles-row">
+                        <label class="toggle-label">
+                            <span>Hearts ♡</span>
+                            <button class="toggle-btn active" data-toggle="hearts" role="switch" aria-checked="true"
+                                aria-label="Toggle hearts">
+                                <span class="toggle-thumb"></span>
+                            </button>
+                        </label>
+                        <label class="toggle-label">
+                            <span>Sparkles ✦</span>
+                            <button class="toggle-btn active" data-toggle="sparkles" role="switch" aria-checked="true"
+                                aria-label="Toggle sparkles">
+                                <span class="toggle-thumb"></span>
+                            </button>
+                        </label>
+                        <label class="toggle-label">
+                            <span>Auto Replay</span>
+                            <button class="toggle-btn" data-toggle="autoReplay" role="switch" aria-checked="false"
+                                aria-label="Toggle auto replay">
+                                <span class="toggle-thumb"></span>
+                            </button>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Action Buttons -->
+                <div class="designer-actions">
+                    <button class="btn-primary" id="openReceiverBtn" aria-label="Open receiver mode">
+                        <span>Open Receiver Mode</span>
+                        <span class="btn-icon-wrap" aria-hidden="true">↗</span>
+                    </button>
+                    <div class="btn-row">
+                        <button class="btn-secondary" id="copyLinkBtn" aria-label="Copy shareable link">
+                            <span>Copy Link</span>
+                        </button>
+                        <button class="btn-ghost" id="resetBtn" aria-label="Reset to defaults">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- RIGHT: Live Preview -->
+            <div class="preview-panel" aria-label="Live preview">
+                <div class="preview-label">
+                    <span class="preview-badge">Preview</span>
+                </div>
+
+                <!-- Phone frame outer shell (Double-Bezel) -->
+                <div class="phone-outer">
+                    <div class="phone-inner">
+
+                        <!-- Notch -->
+                        <div class="phone-notch" aria-hidden="true">
+                            <span class="notch-pill"></span>
+                        </div>
+
+                        <!-- Receiver experience rendered inside preview -->
+                        <div class="phone-screen" id="previewScreen">
+                            <div class="preview-receiver-wrap">
+                                <p class="preview-top-label" id="previewTopLabel">A hug is waiting for you</p>
+                                <div class="preview-char-stage" id="previewCharStage">
+                                    <!-- Characters injected by JS -->
+                                </div>
+                                <button class="preview-cta" id="previewCta" tabindex="-1" aria-hidden="true">
+                                    Tap here to receive a virtual hug
+                                </button>
+                                <div class="preview-message-area hidden" id="previewMsgArea">
+                                    <p class="preview-main-msg" id="previewMainMsg"></p>
+                                    <p class="preview-sub-msg" id="previewSubMsg"></p>
+                                    <p class="preview-from" id="previewFrom"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- /preview-panel -->
+        </div><!-- /designer-layout -->
+
+
+
+    </main>
+
+    <!-- ============================================================
+       RECEIVER MODE
+  ============================================================ -->
+    <div class="receiver-mode" id="receiverMode" role="main" aria-label="Receiver experience">
+
+        <!-- Back button -->
+        <button class="receiver-back-btn" id="receiverBackBtn" aria-label="Back to designer">
+            <span class="back-arrow">←</span>
+            <span class="back-label">Edit</span>
+        </button>
+
+        <!-- Top label -->
+        <p class="receiver-top-label" id="receiverTopLabel">A hug is waiting for you ✦</p>
+
+        <!-- Character stage -->
+        <div class="receiver-stage" id="receiverStage">
+            <div class="char-wrap char-left" id="charLeft">
+                <!-- Left character SVG injected by JS -->
+            </div>
+            <div class="char-wrap char-right" id="charRight">
+                <!-- Right character SVG injected by JS -->
+            </div>
+
+            <!-- Floating hearts container (hug hearts) -->
+            <div class="hug-hearts" id="hugHearts" aria-hidden="true"></div>
+            <!-- Sparkles container -->
+            <div class="sparkle-burst" id="sparkleBurst" aria-hidden="true"></div>
+        </div>
+
+        <!-- CTA Button -->
+        <button class="receiver-cta" id="receiverCta">
+            <span id="receiverCtaText">Tap here to receive a virtual hug</span>
+        </button>
+
+        <!-- Message Area -->
+        <div class="receiver-message" id="receiverMessage" aria-live="polite">
+            <p class="receiver-main-msg" id="receiverMainMsg"></p>
+            <p class="receiver-sub-msg" id="receiverSubMsg"></p>
+            <p class="receiver-from" id="receiverFrom"></p>
+        </div>
+
+        <!-- Replay button -->
+        <button class="replay-btn hidden" id="replayBtn" aria-label="Replay hug animation">
+            <span class="replay-icon" aria-hidden="true">↺</span>
+            <span>Play Again</span>
+        </button>
+
+
+
+    </div>
+
+    <!-- Copy link toast -->
+    <div class="toast" id="copyToast" role="alert" aria-live="assertive">
+        Link copied to clipboard ♡
+    </div>
+
+    <!-- JS Entry -->
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>

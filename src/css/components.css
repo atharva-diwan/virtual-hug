@@ -1,0 +1,346 @@
+/* components.css — Shared UI components across both modes */
+
+/* ──────────────────────────────────────────────────────────────
+   BODY BASE
+────────────────────────────────────────────────────────────── */
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color var(--duration-med) var(--ease-soft),
+        color var(--duration-med) var(--ease-soft);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   AMBIENT HEARTS BACKGROUND LAYER
+────────────────────────────────────────────────────────────── */
+.ambient-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.ambient-heart {
+    position: absolute;
+    bottom: -30px;
+    font-size: 14px;
+    color: var(--color-heart);
+    opacity: 0;
+    animation: heartRise var(--duration-glacial) var(--ease-soft) forwards;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BRAND PILL (header accent)
+────────────────────────────────────────────────────────────── */
+.brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-subtle);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.brand-heart {
+    font-style: normal;
+    font-size: 13px;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BUTTONS — Primary
+────────────────────────────────────────────────────────────── */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: transform var(--duration-fast) var(--ease-spring),
+        box-shadow var(--duration-fast) var(--ease-soft),
+        background-color var(--duration-med) var(--ease-soft);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), var(--shadow-inset-hi);
+    will-change: transform;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), var(--shadow-inset-hi);
+}
+
+.btn-primary:active {
+    transform: scale(0.97) translateY(0);
+}
+
+.btn-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    font-size: 16px;
+    transition: transform var(--duration-fast) var(--ease-out-back);
+    flex-shrink: 0;
+}
+
+.btn-primary:hover .btn-icon-wrap {
+    transform: translate(2px, -2px) scale(1.1);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BUTTONS — Secondary
+────────────────────────────────────────────────────────────── */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-accent);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--color-accent-soft);
+    transition: all var(--duration-fast) var(--ease-soft);
+    box-shadow: var(--shadow-ambient);
+}
+
+.btn-secondary:hover {
+    background: var(--color-accent-subtle);
+    transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+    transform: scale(0.97);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BUTTONS — Ghost
+────────────────────────────────────────────────────────────── */
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-soft);
+}
+
+.btn-ghost:hover {
+    color: var(--color-text);
+    background: var(--color-accent-subtle);
+}
+
+.btn-ghost:active {
+    transform: scale(0.97);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   FORM INPUTS
+────────────────────────────────────────────────────────────── */
+.field-input {
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 400;
+    border: 1.5px solid var(--color-accent-subtle);
+    transition: border-color var(--duration-fast) var(--ease-soft),
+        box-shadow var(--duration-fast) var(--ease-soft);
+    box-shadow: var(--shadow-inset-lo);
+}
+
+.field-input:focus {
+    border-color: var(--color-accent-soft);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb, 232, 121, 154), 0.12), var(--shadow-inset-lo);
+    outline: none;
+}
+
+.field-textarea {
+    min-height: 72px;
+    resize: none;
+    line-height: 1.55;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SEGMENTED CONTROLS
+────────────────────────────────────────────────────────────── */
+.segmented-control {
+    display: flex;
+    gap: 0;
+    background: var(--color-bg-alt);
+    padding: 4px;
+    border-radius: var(--radius-md);
+}
+
+.seg-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: calc(var(--radius-md) - 4px);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: all var(--duration-fast) var(--ease-spring);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.seg-btn.active {
+    background: var(--color-surface-raised);
+    color: var(--color-accent);
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), var(--shadow-inset-hi);
+}
+
+.seg-btn:hover:not(.active) {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   THEME SWATCHES
+────────────────────────────────────────────────────────────── */
+.theme-swatches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+.theme-swatch {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    background: var(--color-surface);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-soft);
+    box-shadow: var(--shadow-ambient);
+}
+
+.theme-swatch.active {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+    background: var(--color-surface-raised);
+}
+
+.theme-swatch:hover:not(.active) {
+    border-color: var(--color-accent-soft);
+    transform: translateY(-1px);
+}
+
+.swatch-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   TOGGLE BUTTONS
+────────────────────────────────────────────────────────────── */
+.toggles-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.toggle-btn {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: var(--radius-pill);
+    background: var(--color-bg-alt);
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--ease-soft);
+    flex-shrink: 0;
+}
+
+.toggle-btn.active {
+    background: var(--color-accent);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.20);
+    transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.toggle-btn.active .toggle-thumb {
+    transform: translateX(19px);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   TOAST NOTIFICATION
+────────────────────────────────────────────────────────────── */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateY(24px) translateX(-50%);
+    background: var(--color-text);
+    color: var(--color-bg);
+    padding: 12px 24px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 200;
+    white-space: nowrap;
+    transition: opacity var(--duration-fast) var(--ease-soft),
+        transform var(--duration-fast) var(--ease-spring);
+}
+
+.toast.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+}
